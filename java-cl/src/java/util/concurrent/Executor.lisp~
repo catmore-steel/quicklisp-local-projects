@@ -1,0 +1,8 @@
+(in-package #:java-cl)
+
+(defclass Executor()
+  ())
+
+
+(defmethod execute ((command Runnable))
+  ())

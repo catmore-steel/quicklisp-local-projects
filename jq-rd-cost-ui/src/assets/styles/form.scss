@@ -1,0 +1,248 @@
+.form-control {
+  width: 100% !important;
+
+  .vue-treeselect__control {
+    width: 100%;
+    line-height: 25px;
+    height: 28px;
+
+    .vue-treeselect__menu {
+      width: 100%;
+    }
+
+    .vue-treeselect__input-container {
+      height: 28px;
+    }
+
+    .vue-treeselect__multi-value {
+      margin-bottom: 0px !important;
+    }
+
+    .vue-treeselect__multi-value-item {
+      height: 28px;
+      display: inline-block;
+    }
+
+    .vue-treeselect__multi-value-item-container {
+      height: 28px;
+      padding-top: 0px;
+    }
+
+    .vue-treeselect__placeholder {
+      line-height: 28px;
+    }
+    .vue-treeselect__single-value{
+      line-height: 26px;
+      height: 26px;
+    }
+  }
+
+  .el-textarea {
+    width: 100%;
+  }
+
+  .el-input__inner {
+    width: 100%;
+  }
+}
+
+
+.el-form-item__label {
+  white-space: normal !important;
+  //white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.el-input-number {
+  width: 100%;
+}
+
+.el-input input:read-only {
+  background-color: #dcdcdc78;
+}
+
+.el-select {
+  width: 100%;
+}
+
+.el-select .el-input input:read-only {
+  background-color: #FFFFFF;
+}
+
+.el-cascader .el-input input:read-only {
+  background-color: #FFFFFF;
+}
+
+//table 字体大小设置
+.cell, .el-tooltip {
+  font-size: 14px;
+}
+
+
+.el-table__body tr.current-row > td {
+  background-color: #ebe6de !important;
+  /* color: #f19944; */
+  /* 设置文字颜色，可以选择不设置 */
+}
+
+//动态表单css样式
+.el-table__row .el-form-item {
+  margin-bottom: 0px;
+}
+
+.el-table__row .el-form-item__content {
+  margin-left: 0px !important;
+}
+
+
+/*========table-control table========*/
+.table-control {
+  border-collapse: collapse;
+  margin: 0 auto;
+  text-align: center;
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  //-moz-box-shadow: 0 1px 1px #ccc;
+  //box-shadow: 0 1px 1px #ccc;
+}
+
+.table-control tr:nth-child(even) {
+  background: #f0f9fe;
+}
+
+.table-control tr {
+  -o-transition: all 0.1s ease-in-out;
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition: all 0.1s ease-in-out;
+  -ms-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
+
+.table-control .highlight, .table-control tr:hover {
+  background: #67c3f996;
+}
+
+.table-control td, .table-control th {
+  font-size: 14px;
+  border: 1px solid #D6F0F5;
+  padding: 10px;
+  /*text-align: left;*/
+}
+
+.table-control th {
+  color: rgb(96, 98, 102);
+  background-color: #dce9f9;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ebf3fc), to(#dce9f9));
+  background-image: -webkit-linear-gradient(top, #ebf3fc, #dce9f9);
+  background-image: -moz-linear-gradient(top, #ebf3fc, #dce9f9);
+  background-image: -ms-linear-gradient(top, #ebf3fc, #dce9f9);
+  background-image: -o-linear-gradient(top, #ebf3fc, #dce9f9);
+  background-image: linear-gradient(top, #ebf3fc, #dce9f9);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#ebf3fc, endColorstr=#dce9f9);
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=#ebf3fc, endColorstr=#dce9f9)";
+  -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, .8) inset;
+  -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, .8) inset;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .8) inset;
+  /*border-top: none;*/
+  text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+}
+
+.table-control td:first-child, .table-control th:first-child {
+}
+
+.table-control th:first-child {
+  -moz-border-radius: 6px 0 0 0;
+  -webkit-border-radius: 6px 0 0 0;
+  border-radius: 6px 0 0 0;
+}
+
+.table-control th:last-child {
+  -moz-border-radius: 0 6px 0 0;
+  -webkit-border-radius: 0 6px 0 0;
+  border-radius: 0 6px 0 0;
+}
+
+.table-control tr:last-child td:first-child {
+  -moz-border-radius: 0 0 0 6px;
+  -webkit-border-radius: 0 0 0 6px;
+  border-radius: 0 0 0 6px;
+}
+
+.table-control tr:last-child td:last-child {
+  -moz-border-radius: 0 0 6px 0;
+  -webkit-border-radius: 0 0 6px 0;
+  border-radius: 0 0 6px 0;
+}
+
+.el-form--inline {
+  .el-form-item {
+    width: 100%;
+    max-width: 450px;
+
+    .el-form-item__label {
+      width: 150px;
+    }
+
+    .el-form-item__content {
+      text-align: center;
+      width: calc(100% - 150px);
+
+    }
+  }
+}
+
+
+.jq_dialog_body {
+  .jq_dialog_footer {
+    border-radius: 5px;
+    background-color: #eeeeef;
+    width: calc(100% + 40px);
+    margin-left: -20px;
+    bottom: 0px;
+    text-align: center;
+    padding: 20px 0;
+    position: initial;
+    margin-bottom: -20px;
+  }
+}
+
+
+.vue-treeselect--disabled .vue-treeselect__control{
+  background-color: #eef1f6 !important;
+}
+.vue-treeselect--disabled .vue-treeselect__control{
+  background-color: #eef1f6 !important;
+}
+.el-select .el-input.is-disabled .el-input__inner{
+  background-color: #eef1f6 !important;
+}
+.el-textarea.is-disabled .el-textarea__inner{
+  color: black;
+}
+
+.el-input.is-disabled .el-input__inner{
+  color: black;
+  background-color: #eef1f6 !important;
+}
+.el-input .el-input__inner{
+  color: black;
+}
+.el-select .el-input .el-input__inner{
+  color: black;
+}
+
+.el-textarea .el-textarea__inner{
+  color: black;
+  font-size: 13px;
+}
+.el-select__tags-text{
+  color: black;
+}
+
+/*========table-control table========*/

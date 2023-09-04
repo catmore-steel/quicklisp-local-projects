@@ -1,0 +1,10 @@
+(in-package #:java-cl)
+
+(defclass Executors()
+  ())
+
+
+(defmethod newFixedThreadPool((executors Executors) nThreads)
+  (let ((inst (make-instance 'ThreadPoolExecutor :corePoolSize nThreads)))
+    inst)
+  )

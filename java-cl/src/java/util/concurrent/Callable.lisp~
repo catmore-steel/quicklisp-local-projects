@@ -1,0 +1,4 @@
+(in-package #:java-cl)
+
+(defclass Callable ()
+  ())

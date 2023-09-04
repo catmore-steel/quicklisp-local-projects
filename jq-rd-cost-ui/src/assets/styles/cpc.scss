@@ -1,0 +1,280 @@
+
+/*body {*/
+/*  position: absolute;*/
+/*  left: 5%;*/
+/*  width: 90%;*/
+/*  background: url("http://oa.ahkcppc.com:8082/assets/admin/layout/img/editbg-2.png");*/
+/*}*/
+
+
+#addOrUpdateForm {
+  font-family: '宋体';
+  font-size: 10.5pt;
+  .form_title{
+    height: 100px;
+  }
+  .p_class {
+    margin: 0pt;
+    orphans: 0;
+    text-align: justify;
+    widows: 0
+  }
+}
+.operate {
+  position: fixed;
+  z-index: 3;
+  top: 8%;
+  left: 20%;
+
+  button {
+    font-size: 12px;
+    cursor: pointer;
+    color: #fff;
+    border: none;
+    outline: none;
+    height: 32px;
+    border-radius: 5px;
+    margin: 0 7px 0 0;
+    i{
+      margin-right: 4px;
+    }
+  }
+  .el-button{
+    margin: 0 7px 0 0;
+    i{
+      margin-right: 4px;
+    }
+  }
+  .save {
+    background-color: #26a69a;
+  }
+  .upload {
+    background-color: #e87e04;
+  }
+}
+
+// 几个书上传页面的样式
+.page_title {
+  font-size: 25px;
+  margin-top: 20px;
+  text-align: center
+}
+
+.page_info {
+  color: #ff436c;
+  text-align: center
+}
+
+.basetr {
+  border-bottom-color: #000000;
+  border-bottom-style: solid;
+  border-bottom-width: 0.75pt;
+  border-left-width: 0.75pt;
+  border-top-color: #000000;
+  border-left-style: solid;
+  border-top-style: solid;
+  border-right-style: solid;
+  border-right-color: #000000;
+  border-left-color: #000000;
+  border-right-width: 0.75pt;
+  border-top-width: 0.75pt;
+}
+
+.P {
+  border-bottom-color: #000000;
+  border-bottom-style: solid;
+  border-bottom-width: 0.75pt;
+  border-left-color: #000000;
+  border-left-style: solid;
+  border-left-width: 0.75pt;
+  border-right-color: #000000;
+  border-right-style: solid;
+  border-right-width: 0.75pt;
+  border-top-color: #000000;
+  border-top-style: solid;
+  border-top-width: 0.75pt;
+  padding-left: 3.88pt;
+  padding-right: 3.88pt;
+  vertical-align: middle;
+}
+
+.tr_class {
+  padding-left: 5.03pt;
+  padding-right: 5.03pt;
+  vertical-align: middle;
+}
+
+.tr3 {
+}
+
+.tr4  {
+  border-right-width: 1.5pt;
+  padding-left: 3.88pt;
+  padding-right: 3.5pt;
+  vertical-align: middle;
+}
+
+.tr5 {
+  border-right-color: #000000;
+  padding-left: 3.88pt;
+  padding-right: 3.88pt;
+  vertical-align: middle;
+}
+
+.tr6 {
+  border-left-color: #000000;
+  padding-left: 3.88pt;
+  padding-right: 3.88pt;
+}
+
+// 专利代理委托书
+.p1{
+  margin: 0pt;
+  orphans: 0;
+  text-align: justify;
+  widows: 0
+}
+.p2{
+  font-size: 10.5pt;
+  line-height: 125%;
+  margin: 7pt 0pt 6pt;
+  orphans: 0;
+  text-align: justify;
+  widows: 0
+}
+
+// 实质审查请求书
+.basep{
+  border-left-color:#000000;
+  border-left-style:solid;
+  vertical-align:middle;
+  border-right-width: 0.75pt;
+  border-top-color: #000000;
+  border-top-style: solid;
+  border-top-width: 0.75pt;
+  padding-left: 3.88pt;
+  padding-right: 3.88pt;
+
+}
+.p3 {
+  border-bottom-color: #000000;
+  border-bottom-style: solid;
+  border-bottom-width: 0.75pt;
+  border-left-width: 0.75pt;
+  border-right-color: #000000;
+  border-right-style: solid;
+}
+
+#addOrUpdateForm input {
+  border-color: #878787;
+  border-style: solid;
+  border-top-width: 0px;
+  border-right-width: 0px;
+  border-bottom-width: 1px;
+  border-left-width: 0px;
+  outline: none;
+  background-color: #8a8c8b30;
+  margin: 1px 1px 1px 0px;
+  padding: 3px 0px;
+}
+
+
+/*Chrome Firefox Opera Safari*/
+#addOrUpdateForm input[readonly] {
+  border: 1px solid #DDD;
+  background-color: #F5F5F5;
+  color: #ACA899;
+}
+
+.cpc-oprate {
+  z-index: 999999;
+  position: fixed;
+  margin: 5px 5px 5px 5px;
+}
+
+.ui_title {
+  display: block;
+  height: 26px;
+  line-height: 26px;
+  border-bottom: 1px solid #DDD \9
+;
+  font-size: 14px;
+  font-weight: bold;
+  color: #000;
+  background: #FFF !important;;
+  background: none;
+  padding-left: 3px;
+}
+
+.ui_title_buttons {
+  top: 0;
+  right: 5px;
+  position: absolute;
+  cursor: pointer;
+  font-size: 0;
+  letter-spacing: -.5em;
+}
+
+#pdfRead {
+  position: fixed;
+  z-index: 9999999999999999999999;
+  display: none;
+  text-align: center;
+  border: 5px solid #fff;
+  top: 2%;
+  left: 20%;
+  background-color: #65696bd1;
+  width: 55%;
+  height: 86%;
+}
+
+.input-ymd {
+  width: 60px;
+}
+
+.radio {
+  margin: 0.5rem;
+}
+
+.radio input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+}
+
+.radio input[type="radio"] + .radio-label:before {
+  content: '';
+  background: #f4f4f4;
+  border-radius: 100%;
+  border: 1px solid #b4b4b4;
+  display: inline-block;
+  width: 1.4em;
+  height: 1.4em;
+  position: relative;
+  top: -0.2em;
+  margin-right: 1em;
+  vertical-align: top;
+  cursor: pointer;
+  text-align: center;
+  -webkit-transition: all 250ms ease;
+  transition: all 250ms ease;
+}
+
+.radio input[type="radio"]:checked + .radio-label:before {
+  background-color: #3197EE;
+  box-shadow: inset 0 0 0 4px #f4f4f4;
+}
+
+.radio input[type="radio"]:focus + .radio-label:before {
+  outline: none;
+  border-color: #3197EE;
+}
+
+.radio input[type="radio"]:disabled + .radio-label:before {
+  box-shadow: inset 0 0 0 4px #f4f4f4;
+  border-color: #b4b4b4;
+  background: #b4b4b4;
+}
+
+.radio input[type="radio"] + .radio-label:empty:before {
+  margin-right: 0;
+}

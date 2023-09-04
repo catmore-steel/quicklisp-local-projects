@@ -1,0 +1,50 @@
+
+(in-package #:java-util)
+
+(defclass Properties()
+  ((propMap :initarg :propMap :initform (make-hash-table))
+   (defaults)))
+
+(defclass Properties2()
+  ((propMap :initarg :propMap :initform (make-hash-table))
+   (defaults)))
+
+;;load compile error
+;;load-prop compile error
+(defmethod loadProp ((prop Properties) str)
+  (do ((line (read-line str nil 'eof)
+	     (read-line str nil 'eof)))
+      ((eql line 'eof))
+    (format t "~A~%" line)
+    ;;(setf (gethash 'foo (Properties-propMap prop)) line)
+    ))
+
+;(defmethod load0 ((lr LineReader))
+;  (let ((limit nil)
+;	(keyLen nil)
+;	(valueStart nil)
+;	(hasSep)
+;	(precedingBackslash))
+;    (do (())
+;	()
+;      ())))
+;
+;
+;(defclass LineReader()
+;  ((lineBuf)
+;   (inByteBuf)
+;   (inCharBuf)
+;   (inLimit)
+;   (inoff)
+;   (inStream)
+;   (reader)))
+;
+;(defmethod readLineCust((lr LineReader))
+;  (let ((len 0)
+;	(off (getf lr 'inoff)))
+;    ()))
+
+
+(defmethod getProperty((properties Properties) key)
+  (let ((ht (slot-value properties 'propMap)))
+    (gethash key ht)))

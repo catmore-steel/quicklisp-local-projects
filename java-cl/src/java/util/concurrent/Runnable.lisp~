@@ -1,0 +1,7 @@
+(in-package #:java-cl)
+
+(Defclass Runnable ()
+  ())
+
+(defmethod run()
+  )

@@ -1,0 +1,8 @@
+(in-package #:mybatis-cl)
+
+(defclass ExecutorService(Executor)
+  ())
+
+
+(defmethod submit((callable Callable))
+  ())

@@ -1,0 +1,60 @@
+;;;; java-cl.asd
+
+(asdf:defsystem #:java-cl
+  :description "Describe java-cl here"
+  :author "catmore"
+  :license  "Specify license here"
+  :version "0.0.1"
+  :serial t
+  :components ((:file "package")
+               (:file "java-cl")))
+
+(asdf:defsystem #:java-io
+  :pathname "src/java/io"
+  :components ((:file "package")
+	       (:file "java-io")
+	       (:file "Reader")))
+
+
+(asdf:defsystem #:java-util
+  :description "Describe java-cl here"
+  :author "Your Name <your.name@example.com>"
+  :license  "Specify license here"
+  :version "0.0.1"
+  :serial t
+  :pathname "src/java/util"
+  :components ((:file "package")
+               (:file "java-util")
+	       (:file "Properties")
+	       (:file "HashSet")))
+
+
+(asdf:defsystem #:java-util-concurrent
+  :pathname "src/java/util/concurrent"
+  :components ((:file "package")
+	       (:file "java-util-concurrent")
+	       (:file "AbstractExecutorService"
+		      :depends-on ("Callable" "Executor"))
+	       (:file "Callable")
+	       (:file "Future")
+	       (:file "FutureTask")
+	       (:file "Executor"
+		      :depends-on ("Runnable"))
+	       (:file "Executors")
+	       (:file "Runnable")
+	       (:file "RunnableFuture")
+	       (:file "ThreadPoolExecutor")))
+
+
+(asdf:defsystem #:java-sql
+  :pathname "src/java/sql"
+  :components ((:file "package")
+	       (:file "java-sql")
+	       (:file "Connection")))
+
+
+(asdf:defsystem #:javax-sql
+  :pathname "src/javax/sql"
+  :components ((:file "package")
+	       (:file "javax-sql")
+	       (:file "DataSource")))

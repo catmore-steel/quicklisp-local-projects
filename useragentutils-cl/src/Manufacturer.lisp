@@ -1,0 +1,40 @@
+(defpackage #:Manufacturer
+  (:use #:cl)
+  (:export #:Manufacturer))
+
+(in-package #:Manufacturer)
+
+;; name is key word so change namee
+(defenum:defenum (Manufacturer (:initargs (id namee)))
+         ((OTHER(1 "Other"))
+	  (MICROSOFT(2 "Microsoft Corporation"))
+	  (APPLE(3 "Apple Inc."))
+	  (SUN(4 "Sun Microsystems, Inc."))
+	  (SYMBIAN(5 "Symbian Ltd."))
+	  (NOKIA(6 "Nokia Corporation"))
+	  (BLACKBERRY(7 "Research In Motion Limited"))
+	  (HP(8 "Hewlett Packard"))
+	  (SONY_ERICSSON(9 "Sony Ericsson Mobile Communications AB"))
+	  (SAMSUNG(20 "Samsung Electronics"))
+	  (SONY(10 "Sony Computer Entertainment, Inc."))
+	  (NINTENDO(11 "Nintendo"))
+	  (OPERA(12 "Opera Software ASA"))
+	  (MOZILLA(13 "Mozilla Foundation"))
+	  (GOOGLE(15 "Google Inc."))
+	  (COMPUSERVE(16 "CompuServe Interactive Services, Inc."))
+	  (YAHOO(17 "Yahoo Inc."))
+	  (AOL(18 "AOL LLC."))
+	  (MMC(19 "Mail.com Media Corporation"))
+	  (AMAZON(24 "Amazon.com, Inc."))
+	  (ROKU(21 "Roku, Inc."))
+	  (ADOBE(23 "Adobe Systems Inc."))
+	  (CONONICAL(25 "Canonical Ltd."))
+	  
+          )
+         
+         ((id)
+          (namee)
+          )
+
+    
+         )

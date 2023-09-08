@@ -1,6 +1,6 @@
 (defpackage #:Manufacturer
   (:use #:cl)
-  (:export #:Manufacturer))
+  (:export #:Manufacturer :Manufacturer-id :Manufacturer-namee))
 
 (in-package #:Manufacturer)
 
@@ -38,3 +38,4 @@
 
     
          )
+

@@ -4,11 +4,12 @@
   ())
 
 (defmethod login((sysLoginService SysLoginService) username password code uuid)
-  (let* ((loginUser (loadUserByUsername (make-instance 'UserDetailsServiceImpl) username))
+  (let* ((loginUser (loadUserByUsername *UserDetailsServiceImpl* username))
 	 (userIdKey (concatenate 'string "jq-rd-cost:" "login_userid:" (write-to-string (slot-value (slot-value loginUser 'user) 'user-id))))
-	 (userKey (lack.session.store.redis:fetch-session *redis* userIdKey)))
+	 (userKey (getCacheObject *RedisCache* userIdKey)))
     (if (not (null userKey)) 
-	(progn 
-	  (lack.session.store.redis:remove-session *redis* userIdKey)
-	  (lack.session.store.redis:remove-session *redis* userKey)))
-    (createToken (make-instance 'TokenService) loginUser)))
+	(progn
+	  (deleteObject *RedisCache* userIdKey)
+	  (deleteObject *RedisCache* userKey)
+	  ))
+    (createToken *TokenService* loginUser)))

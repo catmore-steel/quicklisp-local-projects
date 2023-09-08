@@ -41,6 +41,7 @@
 		 (:file "common/LoginUser")
 		 (:file "common/SysUser")
 		 (:file "common/AjaxResult")
+		 (:file "common/Constants")
 		 (:file "framework/SysLoginService")
 		 (:file "framework/TokenService")
 		 (:file "framework/UserDetailsServiceImpl")

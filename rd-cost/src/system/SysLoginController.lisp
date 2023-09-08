@@ -1,3 +1,4 @@
+
 ;; system--SysLoginController
 (in-package :rd-cost.web)
 
@@ -20,12 +21,12 @@
 ;							      (datafly:convert-object (login (make-instance 'SysLoginService) |username| |password| nil nil))))))
 
 (defroute ("/login" :method :POST) (&key |username| |password|)
-  (let ((ajax (success (make-instance 'AjaxResult)))
-	(token (login (make-instance 'SysLoginService) |username| |password| nil nil)))
+  (let ((ajax (success *AjaxResult*))
+	(token (login *SysLoginService* |username| |password| nil nil)))
     (setf (gethash 'token ajax) token)
     (render-json ajax)))
 
 
 (defroute "/getInfo" ()
-  (getLoginUser (make-instance 'TokenService)))
+  (getLoginUser *TokenService*))
 

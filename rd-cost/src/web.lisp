@@ -46,5 +46,32 @@
 ;;
 ;; redis
 
- (defvar *redis* (lack.session.store.redis:make-redis-store :host "192.168.1.20" :port 6379))
+;;(defvar *redis* (lack.session.store.redis:make-redis-store :host "192.168.1.20" :port 6379))
+(defvar *RedisCache* (make-instance 'RedisCache)) ;; Service or @Component
+
+;;
+;; Controller
+
+
+
+;;
+;; Service
+(defvar *SysLoginService*  (make-instance 'SysLoginService))
+(defvar *TokenService* (make-instance 'TokenService))
+
+
+;;
+;; Service Impl
+(defvar *UserDetailsServiceImpl* (make-instance 'UserDetailsServiceImpl))
+
+;;
+;; Other 
+
+(defvar *AjaxResult* (make-instance 'AjaxResult))
+(defvar *Constants* (make-instance 'Constants))
+
+;;
+;; jose
+
+(defvar *my$ecret* (ironclad:ascii-string-to-byte-array "my$ecret"))
 

@@ -47,7 +47,7 @@
 ;; redis
 
 ;;(defvar *redis* (lack.session.store.redis:make-redis-store :host "192.168.1.20" :port 6379))
-(defvar *RedisCache* (make-instance 'RedisCache)) ;; Service or @Component
+;;(defvar *RedisCache* (make-instance 'RedisCache)) ;; Service or @Component
 
 ;;
 ;; Controller
@@ -56,19 +56,27 @@
 
 ;;
 ;; Service
-(defvar *SysLoginService*  (make-instance 'SysLoginService))
-(defvar *TokenService* (make-instance 'TokenService))
-
+;;(defvar *ISysMenuService* (make-instance 'ISysMenuService))
+;;(defvar *SysLoginService*  (make-instance 'SysLoginService))
+;;(defvar *TokenService* (make-instance 'TokenService))
+;;(defvar *SysPermissionService* (make-instance 'SysPermissionService))
 
 ;;
 ;; Service Impl
-(defvar *UserDetailsServiceImpl* (make-instance 'UserDetailsServiceImpl))
+;;(defvar *UserDetailsServiceImpl* (make-instance 'UserDetailsServiceImpl))
+;;(defvar *SysMenuServiceImpl* (make-instance 'SysMenuServiceImpl))
+
+
+;;
+;; Mapper
+;;(defvar *SysRoleMapper* (make-instance 'SysRoleMapper))
+;;(defvar *SysMenuMapper* (make-instance 'SysMenuMapper))
 
 ;;
 ;; Other 
 
-(defvar *AjaxResult* (make-instance 'AjaxResult))
-(defvar *Constants* (make-instance 'Constants))
+;;(defvar *AjaxResult* (make-instance 'AjaxResult))
+;;(defvar *Constants* (make-instance 'Constants))
 
 ;;
 ;; jose

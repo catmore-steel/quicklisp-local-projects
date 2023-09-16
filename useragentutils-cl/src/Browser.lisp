@@ -6,7 +6,7 @@
 
 
 (defenum:defenum (BrowserBase (:initargs (manufacturer parent versionId namee aliases exclude browserType renderingEngine versionRegexString)))
-    ((OUTLOOK((Manufacturer 'MICROSOFT) nil 100 "Outlook" (make-array 1 :initial-element "MSOffice") nil
+    ((OUTLOOK((Manufacturer Manufacturer::MICROSOFT) nil 100 "Outlook" (make-array 1 :initial-element "MSOffice") nil
 	      (BrowserType BrowserType::EMAIL_CLIENT) (RenderingEngine RenderingEngine::WORD) "MSOffice (([0-9]+))"))
      (IE((Manufacturer Manufacturer::MICROSOFT) nil 1 "Internet Explorer" (make-array 3 :initial-contents '("MSIE" "Trident" "IE ")) (make-array 3 :initial-contents '("BingPreview" "Xbox" "Xbox One"))
 	 (BrowserType BrowserType::WEB_BROWSER) (RenderingEngine RenderingEngine::TRIDENT) "MSIE (([\\d]+)\\.([\\w]+))" ))

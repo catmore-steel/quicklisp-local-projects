@@ -28,5 +28,14 @@
 
 
 (defroute "/getInfo" ()
-  (getLoginUser *TokenService*))
+  (let* ((loginUser (getLoginUser *TokenService*))
+	 (user (slot-value loginUser 'user))
+	 (roles (getRolePermission *SysPermissionService* user))
+	 (permissions (getMenuPermission *SysPermissionService* user))
+	 (ajax (success *AjaxResult*))
+	 )
+    (setf (gethash 'user ajax) user)
+    (setf (gethash 'roles ajax) roles)
+    (setf (gethash 'permissions ajax) permissions)
+    ajax))
 

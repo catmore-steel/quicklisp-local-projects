@@ -4,9 +4,9 @@
   ())
 
 (defmethod selectMenuPermsByUserId ((sysMenuServiceImpl SysMenuServiceImpl) userId)
-  (let ((perms (selectMenuPermsByUserId (make-instance 'SysMenuMapper) userId))
-	(hSet (make-instance 'java-util:HashSet)))
+  (let ((perms (selectMenuPermsByUserId *SysMenuMapper* userId))
+	(permsSet (hash-set:make-hash-set)))
     (dolist (perm perms)
       (if (not (null perm))
-	  (java-util:addAll hSet (cl-ppcre:split "," perm))))
-    hSet))
+	  (hash-set:hs-union permsSet (cl-ppcre:split "," perm))))
+    permsSet))

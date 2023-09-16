@@ -4,8 +4,15 @@
   ())
 
 (defmethod getMenuPermission ((sysPermissionService SysPermissionService) (user SysUser))
-  (let ((hSet (make-instance 'java-util:HashSet)))
+  (let ((perms (hash-set:make-hash-set)))
     (if (isAdmin user)
-	(java-util:add hSet "*:*:*")
-	(java-util:addAll hset (selectMenuPermsByUserId (make-instance 'SysMenuServiceImpl) (slot-value user 'user-id))))
-    hSet))
+	(hash-set:hs-insert perms "*:*:*")
+	(hash-set:hs-union perms (selectMenuPermsByUserId *ISysMenuService* (slot-value user 'user-id))))
+    perms))
+
+
+(defmethod getRolePermission ((sysPermissionService SysPermissionService) (user SysUser))
+  (let ((roles (hash-set:make-hash-set)))
+    (if (isAdmin user)
+	(hash-set:hs-insert roles "admin")
+	(hash-set:hs-union roles ()))))

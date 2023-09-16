@@ -20,7 +20,7 @@
                "datafly" ;; can't use defclass just defmodel or defstruct, see doc
 	       "mito"
                "sxql"
-	       ;;"cl-json" ;; cant't out json data to response ,datafly can
+	       "cl-json" ;; cant't out json data to response ,datafly can
 	       ;; for token
 	       "jose"
 	       ;; my custom lib
@@ -29,26 +29,38 @@
 	       
 	       "cl-ppcre"
 	       "uuid"
-	       "defenum")
+	       "defenum"
+	       "hash-set")
   :components ((:module "src"
                 :components
-                ((:file "main" :depends-on ("config" "view" "db"))
+                (
+		 (:file "main" :depends-on ("config" "view" "db"))
                  (:file "web" :depends-on ("view"))
                  (:file "view" :depends-on ("config"))
                  (:file "db" :depends-on ("config"))
                  (:file "config")
+		 
 		 (:file "common/LoginBody")
 		 (:file "common/LoginUser")
 		 (:file "common/SysUser")
 		 (:file "common/AjaxResult")
 		 (:file "common/Constants")
+		 (:file "common/RedisCache")
 		 (:file "framework/SysLoginService")
 		 (:file "framework/TokenService")
 		 (:file "framework/UserDetailsServiceImpl")
 		 (:file "framework/SysPermissionService")
-		 (:file "system/SysLoginController")
+		 (:file "system/ISysRoleService")
+		 (:file "system/SysRoleServiceImpl")
+		 (:file "system/SysLoginController" :depends-on ("web"))
 		 (:file "system/SysLoginService")
 		 (:file "system/ISysMenuService")
-		 (:file "system/SysMenuMapper"))))
+		 (:file "system/SysMenuServiceImpl")
+		 (:file "system/SysMenuMapper")
+		 (:file "system/SysRoleMapper")
+		 
+		
+		 
+		 )))
   :description ""
   :in-order-to ((test-op (test-op "rd-cost-test"))))

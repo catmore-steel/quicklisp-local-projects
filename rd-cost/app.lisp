@@ -1,3 +1,4 @@
+
 (ql:quickload :rd-cost)
 
 (defpackage rd-cost.app

@@ -24,9 +24,22 @@
 (defmethod getLoginUser((tokenService TokenService))
   (format t "getloginuser---call~%")
   (let* ((token (getToken))
-	 (uuid-token (jose:decode :hs256 *my$ecret* token)))
-    (format t "token=~A~%" token)
-    (format t "uuid-token=~A~%" (cdr (car uuid-token)))))
+	 (uuid-token (jose:decode :hs256 *my$ecret* token))
+	 (uuid (cdr (car uuid-token)))
+	 (userKey (getTokenKey tokenService uuid))
+	 (user-json (getCacheObject *RedisCache* userKey))
+	 (user (json:with-decoder-simple-clos-semantics
+		 (let ((json::*end-of-object-handler* (wrap-for-class 'LoginUser)))
+		   (json:decode-json-from-string user-json))))
+	 )
+    ;(print user)
+    ;(format t "token=~A~%" token)
+    ;(format t "uuid=~A~%" uuid)
+    (format t "user=~A~%" user)
+    (break)
+    user
+    ))
+
 
 (defun getToken ()
   (format t "getToken---call~%")
@@ -47,14 +60,96 @@
 
 (defmethod refreshToken ((tokenService TokenService) (loginUser LoginUser))
   (setf (slot-value loginUser 'loginTime) (get-universal-time))
-  (setf (slot-value loginUser 'loginTime) (+ (slot-value loginUser 'loginTime) (* (slot-value tokenService 'expires) (slot-value tokenService 'MILLIS_MINUTE))))
+  (setf (slot-value loginUser 'loginTime) (+ (slot-value loginUser 'loginTime) (* (slot-value tokenService 'expireTime) (slot-value tokenService 'MILLIS_MINUTE))))
   (let ((userKey (getTokenKey tokenService (slot-value loginUser 'token))))
-    (setCacheObject *RedisCache* userKey loginUser (slot-value tokenService 'expires) "TimeUnit.MINUTES")
+    (format t "xxxxxxxx~A~%" (datafly:object-to-plist loginUser)) ;; can't convert slot user
+    (format t "yyyyyyyy~A~%" (datafly:convert-object loginUser)) ;; can't convert slot user
+    (format t "zzzzzzzz~A~%" (datafly:encode-json loginUser))
+    (format t "wwwwwwww~A~%" (cl-json:encode-json-to-string loginUser))
+    (setCacheObject *RedisCache* userKey (cl-json:encode-json-to-string loginUser) (slot-value tokenService 'expireTime) "TimeUnit.MINUTES")
     (if (null (slot-value tokenService 'soloLogin))
-	()
+	(let ((userIdKey (getUserIdKey tokenService (slot-value (slot-value loginUser 'user) 'user-id))))
+	  (setCacheObject *RedisCache* userIdKey userKey (slot-value tokenService 'expireTime) "TimeUnit.MINUTES"))
 	()))
   )
 
 
 (defmethod getTokenKey ((tokenService TokenService) uuid)
   (concatenate 'string (slot-value *Constants* 'LOGIN_TOKEN_KEY) uuid))
+
+
+(defmethod getUserIdKey ((tokenService TokenService) userId)
+  (concatenate 'string (slot-value *Constants* 'PROJECT_NAME) (slot-value *Constants* 'LOGIN_USERID_KEY) (write-to-string userId)))
+
+
+(defun wrap-for-class (class &optional (fn json::*end-of-object-handler*))
+  (let ((prototype (make-instance 'json::prototype :lisp-class class)))
+    (lambda ()
+      ;; dynamically rebind *prototype* right around calling fn
+      (let ((json::*prototype* prototype))
+	(format t "*prototype*=~A~%" json::*prototype*)
+        (funcall fn)))))
+
+(defun wrap-for-key (&optional (fn json::*object-key-handler*))
+  (lambda (key)
+    (format t "*object-key-handler*=~A~%" key)
+    (format t "*object-key-handler*=~A~%" json::*end-of-object-handler*)
+    (format t "*object-key-handler*=~A~%" (equal key "user"))
+    ;(if (equal key "user")
+    ;	(setf json::*end-of-object-handler* (wrap-for-class 'SysUser)))
+    (funcall fn key)
+    (if (equal key "user")
+	(setf json::*end-of-object-handler* (wrap-for-class 'SysUser)))))
+
+
+(let ((json:*json-symbols-package* *package*))
+  (json:with-decoder-simple-clos-semantics
+    (let ((json::*end-of-object-handler* (wrap-for-class 'LoginUser (lambda()(format t "123456=~A~%" json::*end-of-object-handler*))))
+	  (json::*object-key-handler* (wrap-for-key)))
+      (json:decode-json-from-string
+       "{\"token\":\"BE27D30051DC11EE97BD000C29C68684\",\"logintime\":3905360702,\"expiretime\":null,\"ipaddr\":null,\"loginlocation\":null,\"browser\":null,\"os\":null,\"user\":{\"synced\":true,\"userId\":1,\"deptId\":1,\"userName\":\"admin\",\"email\":\"test@qq.com\",\"phonenumber\":\"18000000000\"},\"permissions\":{\"table\":{}}}"))))
+
+
+
+(let ((json:*json-symbols-package* *package*))
+  (json:with-decoder-simple-clos-semantics
+    (let ((json::*end-of-object-handler* (wrap-for-class 'LoginUser)))
+      (json:decode-json-from-string
+       "{\"token\":\"BE27D30051DC11EE97BD000C29C68684\",\"logintime\":3905360702,\"expiretime\":null,\"ipaddr\":null,\"loginlocation\":null,\"browser\":null,\"os\":null,\"user\":{\"synced\":true,\"userId\":1,\"deptId\":1,\"userName\":\"admin\",\"email\":\"test@qq.com\",\"phonenumber\":\"18000000000\",\"prototype\": {\"lispPackage\": \"rd-cost.web\", \"lispClass\": \"sysuser\"}}}"))))
+
+(let ((json:*json-symbols-package* *package*))
+  (json:with-decoder-simple-clos-semantics
+      (json:decode-json-from-string
+       "{\"token\":\"BE27D30051DC11EE97BD000C29C68684\",\"logintime\":3905360702,\"expiretime\":null,\"ipaddr\":null,\"loginlocation\":null,\"browser\":null,\"os\":null,\"user\":{\"synced\":true,\"userId\":1,\"deptId\":1,\"userName\":\"admin\",\"email\":\"test@qq.com\",\"phonenumber\":\"18000000000\",\"prototype\": {\"lispPackage\": \"rd-cost.web\", \"lispClass\": \"sysuser\"}},\"prototype\": {\"lispPackage\": \"rd-cost.web\", \"lispClass\": \"loginuser\"}}")));;\"permissions\":{\"table\":{}}
+
+
+(let ((json:*json-symbols-package* *package*))
+  (json:with-decoder-simple-clos-semantics
+    (let ((json::*end-of-object-handler* (wrap-for-class 'SysUser)))
+      (json:decode-json-from-string
+       "{\"synced\":true,\"userId\":1,\"deptId\":1,\"userName\":\"admin\",\"email\":\"test@qq.com\",\"phonenumber\":\"18000000000\"}"))))
+
+(let ((json:*json-symbols-package* *package*))
+  (json:with-decoder-simple-clos-semantics
+    (let ((json::*end-of-object-handler* (wrap-for-class 'SysUser))
+	  (json::*object-key-handler* (wrap-for-key)))
+      (json:decode-json-from-string
+       "{\"synced\":true,\"userId\":1,\"deptId\":1,\"userName\":\"admin\",\"email\":\"test@qq.com\",\"phonenumber\":\"18000000000\"}"))))
+
+(let ((json:*json-symbols-package* *package*))
+  (json:with-decoder-simple-clos-semantics
+    (let ((json::*end-of-object-handler* (lambda()(find-class 'sysuser))))
+      (json:decode-json-from-string
+       "{\"synced\":true,\"userId\":1,\"deptId\":1,\"userName\":\"admin\",\"email\":\"test@qq.com\",\"phonenumber\":\"18000000000\"}"))))
+
+(let ((json:*json-symbols-package* *package*))
+  (json:with-decoder-simple-clos-semantics
+    (let ((json::*end-of-object-handler* (funcall (lambda()(make-instance 'json::prototype :lisp-class 'sysuser)))))
+      (json:decode-json-from-string
+       "{\"synced\":true,\"userId\":1,\"deptId\":1,\"userName\":\"admin\",\"email\":\"test@qq.com\",\"phonenumber\":\"18000000000\"}"))))
+
+
+(let ((json:*json-symbols-package* *package*))
+  (json:with-decoder-simple-clos-semantics
+      (json:decode-json-from-string
+       "{\"synced\":true,\"userId\":1,\"deptId\":1,\"userName\":\"admin\",\"email\":\"test@qq.com\",\"phonenumber\":\"18000000000\",\"prototype\": {\"lispPackage\": \"rd-cost.web\", \"lispClass\": \"sysuser\"}}")))

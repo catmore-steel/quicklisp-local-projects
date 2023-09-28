@@ -1,4 +1,5 @@
 java-cl/java-cl.asd
 rd-cost/rd-cost.asd
 rd-cost/rd-cost-test.asd
+fastjson-cl/fastjson-cl.asd
 useragentutils-cl/useragentutils-cl.asd

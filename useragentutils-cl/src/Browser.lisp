@@ -69,13 +69,22 @@
     
     (:method m1 ((browserBase BrowserBase) arg1)
        (format t "m1~%"))
-     (:method m2 ((browserBase BrowserBase) arg2)
+    (:method m2 ((browserBase BrowserBase) arg2)
        (format t "m2~%"))
     (:initialize (format t "123~%") (format t "789~%"))
     (:initialize (format t "456~%"))
     (:initialize (format t "enum=~A~%" (defenum:find-enum 'BrowserBase)))
     (:initialize (format t "tag=~A~%" (BrowserBase 'OUTLOOK)))
     ;(:initialize (format t "xxx=~A~%" BROWSERBASE/INSTANCE-manufacturer))
+
+
+
+
+
+
+
+
+
     (:initialize (init (defenum:find-enum 'BrowserBase)))
     (:initialize :id 1)
     (:initialize (list :id 2))

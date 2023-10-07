@@ -3,6 +3,5 @@
 (defclass JSONPath ()
   ())
 
-
-(defmethod eq ((jsonpath JSONPath) a b)
-  ())
+(defmethod eq-jsonpath ((jsonpath JSONPath) a b)
+  (eq a b))

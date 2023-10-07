@@ -1,3 +1,4 @@
 (defpackage #:com.diffblue.deeptestutils
   (:use #:cl)
-  (:export #:Reflector))
+  (:export #:Reflector
+	   #:forName))

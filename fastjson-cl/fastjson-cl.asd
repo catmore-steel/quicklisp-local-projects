@@ -9,7 +9,7 @@
   :pathname "src"
   :components ((:file "package")
                (:file "fastjson-cl"))
-  :depends-on ("abstract-classes" "interface" "defenum" "com.alibaba.fastjson"))
+  :depends-on ("abstract-classes" "interface" "defenum" "deeptestutils-cl"  "com.alibaba.fastjson"))
 
 
 (asdf:defsystem #:com.alibaba.fastjson
@@ -33,5 +33,34 @@
                (:file "JSONWriter")
                (:file "PropertyNamingStrategy")
                (:file "TypeReference")))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; fastjson-cl-test.asd
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(asdf:defsystem #:fastjson-cl-test
+  :description "Describe fastjson-cl-test here"
+  :author "catmore"
+  :license  "Specify license here"
+  :version "0.0.1"
+  :serial t
+  :pathname "t"
+  :components ((:file "package")
+               (:file "fastjson-cl-test"))
+  :depends-on ("fiveam" "test.com.alibaba.fastjson"))
+
+(asdf:defsystem #:test.com.alibaba.fastjson
+  :serial t
+  :pathname "t/com/alibaba/fastjson"
+  :components ((:file "package")
+               (:file "com-alibaba-fastjson")
+               (:file "JSONPathTest")))
+
+
+
+
+
+
 
 

@@ -1,0 +1,12 @@
+;;;; fastjson-cl-test.asd
+
+(asdf:defsystem #:fastjson-cl-test
+  :description "Describe fastjson-cl-test here"
+  :author "catmore"
+  :license  "Specify license here"
+  :version "0.0.1"
+  :serial t
+  :pathname "t"
+  :components ((:file "package")
+               (:file "fastjson-cl"))
+  :depends-on ("abstract-classes" "interface" "defenum" "com.alibaba.fastjson"))

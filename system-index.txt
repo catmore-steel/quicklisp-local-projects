@@ -2,5 +2,7 @@ java-cl/java-cl.asd
 rd-cost/rd-cost.asd
 rd-cost/rd-cost-test.asd
 fastjson-cl/fastjson-cl.asd
+my-utils-cl/my-utils-cl.asd
+fastjson-cl/fastjson-cl-test.asd
 deeptestutils-cl/deeptestutils-cl.asd
 useragentutils-cl/useragentutils-cl.asd

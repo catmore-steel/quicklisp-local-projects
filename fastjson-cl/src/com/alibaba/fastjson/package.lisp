@@ -2,4 +2,5 @@
 
 (defpackage #:com.alibaba.fastjson
   (:use #:cl)
-  (:export #:JSONPath))
+  (:export #:JSONPath
+	   #:JSONPathParser))

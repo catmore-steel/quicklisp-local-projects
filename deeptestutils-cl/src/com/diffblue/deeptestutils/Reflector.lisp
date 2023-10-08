@@ -3,14 +3,18 @@
 (defclass Reflector ()
   ())
 
-
-;; 192
 (defmethod forName ((reflector Reflector) className)
   (find-class className))
 
-;; 391
 (defmethod getInstance ((reflector Reflector) className)
   (make-instance className))
 
+;; (defgeneric setField (Reflector a b c) )
+
+(defmethod setField ((reflector Reflector) obj fieldName newVal)
+  (setField4 reflector (find-class obj) obj fieldName newVal))
+
+(defmethod setField4 ((reflector Reflector) (c standard-class) o fieldName newVal)
+  ())
 
 

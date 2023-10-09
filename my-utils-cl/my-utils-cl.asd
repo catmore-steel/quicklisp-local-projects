@@ -10,3 +10,10 @@
   :components ((:file "package")
                (:file "my-utils-cl"))
   :depends-on ("closer-mop" "cl-change-case"))
+
+
+(asdf:defsystem #:langutils
+  :pathname "src/com/lang"
+  :components ((:file "package")
+	       (:file "in-package")
+	       (:file "classutils")))

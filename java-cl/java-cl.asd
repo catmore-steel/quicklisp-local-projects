@@ -26,7 +26,10 @@
   :components ((:file "package")
                (:file "java-util")
 	       (:file "Properties")
-	       (:file "HashSet")))
+	       (:file "HashSet")
+	       (:file "Arrays")
+	       (:file "Spliterator")
+	       (:file "Spliterators")))
 
 
 (asdf:defsystem #:java-util-concurrent
@@ -44,6 +47,13 @@
 	       (:file "Runnable")
 	       (:file "RunnableFuture")
 	       (:file "ThreadPoolExecutor")))
+
+
+(asdf:defsystem #:java-util-stream
+  :pathname "src/java/util/stream"
+  :components ((:file "package")
+	       (:file "in-package")
+	       (:file "Stream")))
 
 
 (asdf:defsystem #:java-sql

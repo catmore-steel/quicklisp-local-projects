@@ -15,6 +15,7 @@
   (setField4 reflector (find-class obj) obj fieldName newVal))
 
 (defmethod setField4 ((reflector Reflector) (c standard-class) o fieldName newVal)
-  ())
+  (let ((field ()))
+    ()))
 
 

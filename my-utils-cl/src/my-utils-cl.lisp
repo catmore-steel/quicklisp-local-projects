@@ -2,6 +2,7 @@
 
 (in-package #:my-utils-cl)
 
+
 (defun get-slot-definition (class-symbol json-key)
   "returns a slot-definition from the slot of class-symbol which is infered from using json-key / method symbol"
   (find

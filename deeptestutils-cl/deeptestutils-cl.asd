@@ -25,10 +25,12 @@
 (asdf:defsystem #:deeptestutils-cl-test
   :pathname "t"
   :components ((:file "package")
-	       (:file "deeptestutils-cl-test")))
+	       (:file "deeptestutils-cl-test"))
+  :depends-on ("test.com.diffblue.deeptestutils"))
 
 (asdf:defsystem #:test.com.diffblue.deeptestutils
   :pathname "t/com/diffblue/deeptestutils"
   :components ((:file "package")
-	       (:file "com-diffblue-deeptestutils")))
+	       (:file "com-diffblue-deeptestutils")
+	       (:file "ReflectorTest")))
 

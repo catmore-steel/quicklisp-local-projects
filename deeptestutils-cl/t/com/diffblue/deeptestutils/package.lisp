@@ -1,2 +1,2 @@
 (defpackage #:test.com.diffblue.deeptestutils
-  (:use #:cl))
+  (:use #:cl #:5am))

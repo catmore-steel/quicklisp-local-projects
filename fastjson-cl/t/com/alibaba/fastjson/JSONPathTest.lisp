@@ -41,12 +41,11 @@
     (is (eql nil retval))))
 
 (test isEOF1
-  (let* ((objectUnderTest (getInstance (make-instance 'Reflector) 'JSONPathParser))
-	 )
+  (let* ((objectUnderTest (getInstance (make-instance 'Reflector) 'JSONPathParser)))
     (setField (make-instance 'Reflector) "path" "")
     (setField (make-instance 'Reflector) "pos" -2147483647)
     (setField (make-instance 'Reflector) "level" 0)
-    (setField (make-instance 'Reflector) "ch" '\u0000')
+    (setField (make-instance 'Reflector) "ch" "\u0000")
     (let* ((c (forName (make-instance 'Reflector) 'JSONPathParser))
 	   (m (ensure-generic-function 'isEOF))
 	   (retval (funcall m (make-instance 'JSONPathParser) objectUnderTest)))

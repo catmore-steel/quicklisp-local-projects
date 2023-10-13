@@ -9,11 +9,31 @@
   :pathname "src"
   :components ((:file "package")
                (:file "my-utils-cl"))
-  :depends-on ("closer-mop" "cl-change-case"))
+  :depends-on ("closer-mop" "cl-change-case" "my-utils-java-lang"))
 
 
-(asdf:defsystem #:langutils
-  :pathname "src/com/lang"
+(asdf:defsystem #:my-utils-java-lang
+  :pathname "src/java/lang"
   :components ((:file "package")
 	       (:file "in-package")
-	       (:file "classutils")))
+	       (:file "ClassUtils")))
+
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;            my-utils-cl-test
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(asdf:defsystem #:my-utils-cl-test
+  :pathname "t"
+  :components ((:file "package")
+	       (:file "in-package"))
+  :depends-on ("fiveam" "my-utils-cl" "test-java-lang"))
+
+(asdf:defsystem #:test-java-lang
+  :pathname "t/java/lang"
+  :components ((:file "package")
+	       (:file "in-package")
+	       (:file "ClassUtilsTest")))
+

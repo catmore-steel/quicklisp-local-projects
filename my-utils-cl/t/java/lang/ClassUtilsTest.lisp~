@@ -1,0 +1,19 @@
+(in-package #:test.java.lang)
+
+(defclass Foo ()
+  ())
+
+(defmethod foo-gf ((foo Foo))
+  ())
+
+(defmethod foo-gf2 ((foo Foo))
+  ())
+
+
+(test getDeclaredMethod
+  (is (eql 'foo-gf (my.utils.java.lang:getDeclaredMethod 'foo "foo-gf" nil))))
+
+
+(test my-test
+  (is (= 2 (+ 1 1))))
+

@@ -7,13 +7,29 @@
   :version "0.0.1"
   :serial t
   :components ((:file "package")
-               (:file "java-cl")))
+               (:file "java-cl"))
+  :depends-on ("closer-mop" "cl-change-case" "java-lang"))
 
 (asdf:defsystem #:java-io
   :pathname "src/java/io"
   :components ((:file "package")
 	       (:file "java-io")
 	       (:file "Reader")))
+
+
+(asdf:defsystem #:java-lang
+  :pathname "src/java/lang"
+  :components ((:file "package")
+	       (:file "in-package")
+	       (:file "Class")))
+
+
+(asdf:defsystem #:java-lang-reflect
+  :pathname "src/java/lang/reflect"
+  :components ((:file "package")
+	       (:file "in-package")
+	       (:file "Field")))
+
 
 
 (asdf:defsystem #:java-util
@@ -68,3 +84,18 @@
   :components ((:file "package")
 	       (:file "javax-sql")
 	       (:file "DataSource")))
+
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;      unit-test
+;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+(asdf:defsystem #:java-lang-test
+  :pathname "t/java/lang"
+  :components ((:file "package")
+	       (:file "in-package")
+	       (:file "ClassTest"))
+  :depends-on ("fiveam" "java-lang"))

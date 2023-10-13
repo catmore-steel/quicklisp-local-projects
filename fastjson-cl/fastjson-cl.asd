@@ -47,8 +47,9 @@
   :serial t
   :pathname "t"
   :components ((:file "package")
-               (:file "fastjson-cl-test"))
-  :depends-on ("fiveam" "test.com.alibaba.fastjson"))
+               (:file "fastjson-cl-test")
+	       )
+  :depends-on ("test.com.alibaba.fastjson"))
 
 (asdf:defsystem #:test.com.alibaba.fastjson
   :serial t

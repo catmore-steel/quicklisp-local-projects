@@ -11,5 +11,8 @@
   ())
 
 (defmethod spliterator ((array Arrays) startInclusive endExclusive)
-  ())
+  (spliterator (make-instance 'Spliterators) array startInclusive endExclusive (let* ((instance (make-instance 'Spliterator))
+										     (ORDERED (slot-value instance))
+										     (IMMUTABLE (slot-value instance)))
+										 (logior ORDERED IMMUTABLE))))
 

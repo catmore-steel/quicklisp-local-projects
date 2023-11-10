@@ -65,6 +65,17 @@
 	       (:file "ThreadPoolExecutor")))
 
 
+(asdf:defsystem #:java-util-function
+  :pathname "src/java/util/function"
+  :components ((:file "package")
+	       (:file "in-package")
+	       (:file "BiFunction"
+		      :depends-on ("Function"))
+	       (:file "Consumer")
+	       (:file "Function")))
+
+
+
 (asdf:defsystem #:java-util-stream
   :pathname "src/java/util/stream"
   :components ((:file "package")
@@ -99,3 +110,11 @@
 	       (:file "in-package")
 	       (:file "ClassTest"))
   :depends-on ("fiveam" "java-lang"))
+
+
+(asdf:defsystem #:java-util-function-test
+  :pathname "t/java/util/function"
+  :components ((:file "package")
+	       (:file "in-package")
+	       (:file "BiFunctionTest"))
+  :depends-on ("fiveam" "java-util-function"))

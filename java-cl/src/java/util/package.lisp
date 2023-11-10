@@ -4,7 +4,7 @@
 
 ;;;; package.lisp
 
-(defpackage #:java-util
+(defpackage #:java.util
   (:use #:cl)
   (:export #:Properties
 	   #:propMap;CL-USER> (slot-value (make-instance 'java-util:Properties) 'java-util:propMap)//在CL包中的访问方式

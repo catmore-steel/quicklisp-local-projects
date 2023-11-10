@@ -1,0 +1,4 @@
+(in-package #:java.util)
+
+(defclass Map ()
+  ())

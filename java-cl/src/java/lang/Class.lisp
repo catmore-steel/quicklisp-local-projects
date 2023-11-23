@@ -16,7 +16,11 @@
 
 
 (defmethod getDeclaredFields (class)
-  (c2mop:class-direct-slots class))
+  (let ((lst '())
+	(cds (c2mop:class-direct-slots class)))
+    (dolist (e cds)
+      (pushnew (make-instance 'java.lang.reflect:Field :sdsd e) lst))
+    lst))
 
 (defmethod getDeclaredField (class name)
   (find

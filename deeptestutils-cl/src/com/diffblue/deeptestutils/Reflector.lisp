@@ -16,8 +16,9 @@
 
 (defmethod setField4 ((reflector Reflector) (c standard-class) o fieldName newVal)
   (let ((field nil)
-	(declaredFields (java.lang.reflect:getDeclaredFields c)))
-    (loop for item in declaredFields
-	  when (eql fieldName ))))
+	(declaredFields (java.lang:getDeclaredFields c)))
+    (loop for field in declaredFields
+	  when (eql fieldName (getName field))
+	    (set field o newVal))))
 
 
